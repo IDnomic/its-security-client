@@ -12,7 +12,7 @@ EASERVER=http://52.30.153.183
 ### Paramètres propres au boitier ITS
 
 TECHNICALKEY=TechnicalKey
-ITSID=EE_ITS
+ITSID=CLIENT-TEST
 AIDSSPLIST=240100250100
 
 # Ces fichiers seront générés

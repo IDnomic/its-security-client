@@ -1,21 +1,14 @@
-# Pour MacOSX
-INCLUDEDIRS = -I /opt/local/include
-LIBDIRS = -L /opt/local/lib
+
+ifdef OPENSSL_HOME
+	INCLUDEDIRS += -I $(OPENSSL_HOME)/include
+	LDFLAGS += -L $(OPENSSL_HOME)
+endif
 
 CC = gcc
 
-#CFLAGS = -O2
 CFLAGS = -O0 -g -Wall $(INCLUDEDIRS)
 
-#LDFLAGS = -Bstatic
-
-#STATIC = yes
-
-ifeq ($(STATIC),yes)
-  LIBS = /opt/local/lib/libcrypto.a /opt/local/lib/libz.a -ldl
-else
-  LIBS = -lcrypto -ldl
-endif
+LIBS = -lcrypto -ldl
 
 PROGRAMS = PKIClient
 ALLOBJS = utils.o ise_asn1.o isetoolbox.o genkey.o PKIClient.o receiveECResponse.o genECEnroll.o genATEnroll.o receiveATResponse.o

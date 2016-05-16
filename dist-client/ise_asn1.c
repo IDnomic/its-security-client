@@ -5,39 +5,33 @@
 
 void addISEoids(void)
 {
-  int dummynid;
+    NID_ISE_ct = OBJ_create("1.3.6.1.4.1.22234.4.1.1", "id-ITS-ISE-ct", "ISE Content-types");
+    NID_ISE_ct_Data = OBJ_create("1.3.6.1.4.1.22234.4.1.1.1", "id-ITS-ISE-ct-Data", "ISE Data");
+    NID_ISE_ct_SignedData = OBJ_create("1.3.6.1.4.1.22234.4.1.1.2", "id-ITS-ISE-ct-SignedData", "ISE SignedData");
+    NID_ISE_ct_EncryptedData = OBJ_create("1.3.6.1.4.1.22234.4.1.1.3", "id-ITS-ISE-ct-EncryptedData", "ISE EncryptedData");
+    NID_ISE_ct_EnrolmentRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.4", "id-ITS-ISE-ct-EnrolmentRequest", "ISE EnrolmentRequest");
+    NID_ISE_ct_EnrolmentResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.5", "id-ITS-ISE-ct-EnrolmentResponse", "ISE EnrolmentResponse");
+    NID_ISE_ct_AuthorizationRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.6", "id-ITS-ISE-ct-AuthorizationRequest", "ISE AuthorizationRequest");
+    NID_ISE_ct_AuthorizationResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.7", "id-ITS-ISE-ct-AuthorizationResponse", "ISE AuthorizationResponse");
+    NID_ISE_ct_AuthorizationValidationRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.8", "id-ITS-ISE-ct-AuthorizationValidationRequest", "ISE AuthorizationValidationRequest");
+    NID_ISE_ct_AuthorizationValidationResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.9", "id-ITS-ISE-ct-AuthorizationValidationResponse", "ISE AuthorizationValidationResponse");
+    NID_ISE_ct_SharedATRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.10", "id-ITS-ISE-ct-SharedATRequest", "ISE SharedATRequest");
 
-  dummynid = OBJ_create("1.3.6.1.4.1.22234", "id-OpenTrust", "IANA Private Enterprises OpenTrust");
-  dummynid = OBJ_create("1.3.6.1.4.1.22234.4", "id-OT-Innovation", "OpenTrust Innovation");
-  dummynid = OBJ_create("1.3.6.1.4.1.22234.4.1", "id-OT-Innovation-ISE", "OpenTrust ISE project");
+    NID_ISE_algos = OBJ_create("1.3.6.1.4.1.22234.4.1.2", "id-ITS-ISE-algos", "ISE algorithms");
+    NID_ISE_algos_aes128CCM_103097 = OBJ_create("1.3.6.1.4.1.22234.4.1.2.1", "id-aes128-CCM-103097", "AES128CCM with TS 103097 params");
+    NID_ISE_algos_ecies_103097 = OBJ_create("1.3.6.1.4.1.22234.4.1.2.2", "id-ecies-103097", "ECIES with TS 103097 params");
 
-  NID_ISE_ct = OBJ_create("1.3.6.1.4.1.22234.4.1.1", "id-ITS-ISE-ct", "ISE Content-types");
-  NID_ISE_ct_Data = OBJ_create("1.3.6.1.4.1.22234.4.1.1.1", "id-ITS-ISE-ct-Data", "ISE Data");
-  NID_ISE_ct_SignedData = OBJ_create("1.3.6.1.4.1.22234.4.1.1.2", "id-ITS-ISE-ct-SignedData", "ISE SignedData");
-  NID_ISE_ct_EncryptedData = OBJ_create("1.3.6.1.4.1.22234.4.1.1.3", "id-ITS-ISE-ct-EncryptedData", "ISE EncryptedData");
-  NID_ISE_ct_EnrolmentRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.4", "id-ITS-ISE-ct-EnrolmentRequest", "ISE EnrolmentRequest");
-  NID_ISE_ct_EnrolmentResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.5", "id-ITS-ISE-ct-EnrolmentResponse", "ISE EnrolmentResponse");
-  NID_ISE_ct_AuthorizationRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.6", "id-ITS-ISE-ct-AuthorizationRequest", "ISE AuthorizationRequest");
-  NID_ISE_ct_AuthorizationResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.7", "id-ITS-ISE-ct-AuthorizationResponse", "ISE AuthorizationResponse");
-  NID_ISE_ct_AuthorizationValidationRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.8", "id-ITS-ISE-ct-AuthorizationValidationRequest", "ISE AuthorizationValidationRequest");
-  NID_ISE_ct_AuthorizationValidationResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.9", "id-ITS-ISE-ct-AuthorizationValidationResponse", "ISE AuthorizationValidationResponse");
-  NID_ISE_ct_SharedATRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.10", "id-ITS-ISE-ct-SharedATRequest", "ISE SharedATRequest");
-
-  NID_ISE_algos = OBJ_create("1.3.6.1.4.1.22234.4.1.2", "id-ITS-ISE-algos", "ISE algorithms");
-  NID_ISE_algos_aes128CCM_103097 = OBJ_create("1.3.6.1.4.1.22234.4.1.2.1", "id-aes128-CCM-103097", "AES128CCM with TS 103097 params");
-  NID_ISE_algos_ecies_103097 = OBJ_create("1.3.6.1.4.1.22234.4.1.2.2", "id-ecies-103097", "ECIES with TS 103097 params");
-
-  NID_ISE_attrs = OBJ_create("1.3.6.1.4.1.22234.4.1.3", "id-ITS-ISE-attrs", "ISE attributes");
-  NID_ISE_attrs_messageDigest = OBJ_create("1.3.6.1.4.1.22234.4.1.3.1", "id-messageDigest", "ISE messageDigest");
-  NID_ISE_attrs_contentType = OBJ_create("1.3.6.1.4.1.22234.4.1.3.2", "id-contentType", "ISE contentType");
-  NID_ISE_attrs_signingTime = OBJ_create("1.3.6.1.4.1.22234.4.1.3.3", "id-signingTime", "ISE signingTime");
+    NID_ISE_attrs = OBJ_create("1.3.6.1.4.1.22234.4.1.3", "id-ITS-ISE-attrs", "ISE attributes");
+    NID_ISE_attrs_messageDigest = OBJ_create("1.3.6.1.4.1.22234.4.1.3.1", "id-messageDigest", "ISE messageDigest");
+    NID_ISE_attrs_contentType = OBJ_create("1.3.6.1.4.1.22234.4.1.3.2", "id-contentType", "ISE contentType");
+    NID_ISE_attrs_signingTime = OBJ_create("1.3.6.1.4.1.22234.4.1.3.3", "id-signingTime", "ISE signingTime");
 }
 
 
 /* PublicKey */
 ASN1_SEQUENCE(ISE_PUBLICKEY) = {
-  ASN1_SIMPLE(ISE_PUBLICKEY, type, ASN1_ENUMERATED),
-  ASN1_SIMPLE(ISE_PUBLICKEY, x, ASN1_INTEGER)
+    ASN1_SIMPLE(ISE_PUBLICKEY, type, ASN1_ENUMERATED),
+    ASN1_SIMPLE(ISE_PUBLICKEY, x, ASN1_INTEGER)
 } ASN1_SEQUENCE_END(ISE_PUBLICKEY)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_PUBLICKEY);
@@ -46,123 +40,123 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_PUBLICKEY);
 
 ISE_PUBLICKEY *ISE_PUBLICKEY_set(ISE_PUBLICKEY **a, EC_KEY *key)
 {
-  int result = 0;
-  ISE_PUBLICKEY *tmp = NULL;
-  BIGNUM *x = NULL,
-         *y = NULL;
-  EC_GROUP *group = NULL;
+    int result = 0;
+    ISE_PUBLICKEY *tmp = NULL;
+    BIGNUM *x = NULL,
+           *y = NULL;
+    EC_GROUP *group = NULL;
 
-  if (!key)
-    goto done;
+    if (!key)
+        goto done;
 
-  tmp = ISE_PUBLICKEY_new();
-  if (!tmp)
-    goto done;
+    tmp = ISE_PUBLICKEY_new();
+    if (!tmp)
+        goto done;
 
-  group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
-  if (!group)
-    goto done;
-  EC_GROUP_set_point_conversion_form(group, POINT_CONVERSION_COMPRESSED);
-  x = BN_new();
-  y = BN_new();
-  if (EC_POINT_get_affine_coordinates_GFp(group, EC_KEY_get0_public_key(key), x, y, NULL) == 0)
-    goto done;
-  ASN1_ENUMERATED_set(tmp->type, BN_is_odd(y)?COMPRESSED_Y_LSB1:COMPRESSED_Y_LSB0);
-  BN_to_ASN1_INTEGER(x, tmp->x);
+    group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
+    if (!group)
+        goto done;
+    EC_GROUP_set_point_conversion_form(group, POINT_CONVERSION_COMPRESSED);
+    x = BN_new();
+    y = BN_new();
+    if (EC_POINT_get_affine_coordinates_GFp(group, EC_KEY_get0_public_key(key), x, y, NULL) == 0)
+        goto done;
+    ASN1_ENUMERATED_set(tmp->type, BN_is_odd(y)?COMPRESSED_Y_LSB1:COMPRESSED_Y_LSB0);
+    BN_to_ASN1_INTEGER(x, tmp->x);
 
-  result = 1;
+    result = 1;
 
 done:
-  if (x) BN_free(x);
-  if (y) BN_free(y);
-  if (group) EC_GROUP_free(group);
-  if (result != 1)
-  {
-    if (tmp) ISE_PUBLICKEY_free(tmp);
-    tmp = NULL;
-  } else {
-    if (a)
+    if (x) BN_free(x);
+    if (y) BN_free(y);
+    if (group) EC_GROUP_free(group);
+    if (result != 1)
     {
-      if (*a) ISE_PUBLICKEY_free(*a);
-      *a = tmp;
+        if (tmp) ISE_PUBLICKEY_free(tmp);
+        tmp = NULL;
+    } else {
+        if (a)
+        {
+            if (*a) ISE_PUBLICKEY_free(*a);
+            *a = tmp;
+        }
     }
-  }
-  return tmp;
+    return tmp;
 }
 
 EC_KEY *ISE_PUBLICKEY_to_EC_KEY(EC_KEY **a, ISE_PUBLICKEY *key)
 {
-  int result = 0;
-  EC_GROUP *group = NULL;
-  EC_KEY *tmp = NULL;
-  EC_POINT *point = NULL;
-  BIGNUM *x = NULL;
-  long Y;
- 
-  if (!key)
-    goto done;
+    int result = 0;
+    EC_GROUP *group = NULL;
+    EC_KEY *tmp = NULL;
+    EC_POINT *point = NULL;
+    BIGNUM *x = NULL;
+    long Y;
 
-  group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
-  if (!group)
-    goto done;
-
-  tmp = EC_KEY_new();
-  if (!tmp)
-    goto done;
-
-  if (EC_KEY_set_group(tmp, group) == 0)
-    goto done;
-
-  point = EC_POINT_new(group);
-  if (!point)
-    goto done;
-
-  x = BN_new();
-  if (!x)
-    goto done;
-
-  Y = ASN1_ENUMERATED_get(key->type);
-
-  switch (Y)
-  {
-    case COMPRESSED_Y_LSB0:
-    case COMPRESSED_Y_LSB1:
-      ASN1_INTEGER_to_BN(key->x, x);
-      if (EC_POINT_set_compressed_coordinates_GFp(group, point, x, (Y==COMPRESSED_Y_LSB0)?0:1, NULL) == 0)
+    if (!key)
         goto done;
-      if (EC_KEY_set_public_key(tmp, point) == 0)
-        goto done;
-      result = 1;
-      break;
 
-    default:
-      break;
-  }
+    group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
+    if (!group)
+        goto done;
+
+    tmp = EC_KEY_new();
+    if (!tmp)
+        goto done;
+
+    if (EC_KEY_set_group(tmp, group) == 0)
+        goto done;
+
+    point = EC_POINT_new(group);
+    if (!point)
+        goto done;
+
+    x = BN_new();
+    if (!x)
+        goto done;
+
+    Y = ASN1_ENUMERATED_get(key->type);
+
+    switch (Y)
+    {
+        case COMPRESSED_Y_LSB0:
+        case COMPRESSED_Y_LSB1:
+            ASN1_INTEGER_to_BN(key->x, x);
+            if (EC_POINT_set_compressed_coordinates_GFp(group, point, x, (Y==COMPRESSED_Y_LSB0)?0:1, NULL) == 0)
+                goto done;
+            if (EC_KEY_set_public_key(tmp, point) == 0)
+                goto done;
+            result = 1;
+            break;
+
+        default:
+            break;
+    }
 
 done:
-  if (group) EC_GROUP_free(group);
-  if (point) EC_POINT_free(point);
-  if (x) BN_free(x);
-  if (result != 1)
-  {
-    if (tmp) EC_KEY_free(tmp);
-    tmp = NULL;
-  } else {
-    if (a)
+    if (group) EC_GROUP_free(group);
+    if (point) EC_POINT_free(point);
+    if (x) BN_free(x);
+    if (result != 1)
     {
-      if (*a) EC_KEY_free(*a);
-      *a = tmp;
+        if (tmp) EC_KEY_free(tmp);
+        tmp = NULL;
+    } else {
+        if (a)
+        {
+            if (*a) EC_KEY_free(*a);
+            *a = tmp;
+        }
     }
-  }
-  return tmp;
+    return tmp;
 }
 
 
 /* ECIESEncryptedKey103097 */
 ASN1_SEQUENCE(ISE_ECIESENCRYPTEDKEY103097) = {
-  ASN1_SIMPLE(ISE_ECIESENCRYPTEDKEY103097, v, ISE_PUBLICKEY),
-  ASN1_SIMPLE(ISE_ECIESENCRYPTEDKEY103097, c, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_ECIESENCRYPTEDKEY103097, t, ASN1_OCTET_STRING)
+    ASN1_SIMPLE(ISE_ECIESENCRYPTEDKEY103097, v, ISE_PUBLICKEY),
+    ASN1_SIMPLE(ISE_ECIESENCRYPTEDKEY103097, c, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_ECIESENCRYPTEDKEY103097, t, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_ECIESENCRYPTEDKEY103097)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_ECIESENCRYPTEDKEY103097);
@@ -172,9 +166,9 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_ECIESENCRYPTEDKEY103097);
 
 /* Data */
 ASN1_SEQUENCE(ISE_DATA) = {
-  ASN1_OPT(ISE_DATA, version, ASN1_INTEGER),
-  ASN1_SIMPLE(ISE_DATA, contentType, ASN1_OBJECT),
-  ASN1_OPT(ISE_DATA, content, ASN1_OCTET_STRING)
+    ASN1_OPT(ISE_DATA, version, ASN1_INTEGER),
+    ASN1_SIMPLE(ISE_DATA, contentType, ASN1_OBJECT),
+    ASN1_OPT(ISE_DATA, content, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_DATA)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_DATA);
@@ -184,9 +178,9 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_DATA);
 
 /* RecipientInfo */
 ASN1_SEQUENCE(ISE_RECIPIENTINFO) = {
-  ASN1_SIMPLE(ISE_RECIPIENTINFO, recipient, ASN1_OCTET_STRING),
-  ASN1_OPT(ISE_RECIPIENTINFO, kexalgid, X509_ALGOR),
-  ASN1_SIMPLE(ISE_RECIPIENTINFO, encryptedKeyMaterial, ASN1_OCTET_STRING)
+    ASN1_SIMPLE(ISE_RECIPIENTINFO, recipient, ASN1_OCTET_STRING),
+    ASN1_OPT(ISE_RECIPIENTINFO, kexalgid, X509_ALGOR),
+    ASN1_SIMPLE(ISE_RECIPIENTINFO, encryptedKeyMaterial, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_RECIPIENTINFO)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_RECIPIENTINFO);
@@ -196,7 +190,7 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_RECIPIENTINFO);
 
 /* CCMDefaultParameters */
 ASN1_SEQUENCE(ISE_CCMDEFAULTPARAMETERS) = {
-  ASN1_SIMPLE(ISE_CCMDEFAULTPARAMETERS, aesNonce, ASN1_OCTET_STRING)
+    ASN1_SIMPLE(ISE_CCMDEFAULTPARAMETERS, aesNonce, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_CCMDEFAULTPARAMETERS)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_CCMDEFAULTPARAMETERS);
@@ -206,11 +200,11 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_CCMDEFAULTPARAMETERS);
 
 /* EncryptedData */
 ASN1_SEQUENCE(ISE_ENCRYPTEDDATA) = {
-  ASN1_OPT(ISE_ENCRYPTEDDATA, version, ASN1_INTEGER),
-  ASN1_SEQUENCE_OF(ISE_ENCRYPTEDDATA, recipientInfos, ISE_RECIPIENTINFO),
-  ASN1_SIMPLE(ISE_ENCRYPTEDDATA, encryptedContentType, ASN1_OBJECT),
-  ASN1_SIMPLE(ISE_ENCRYPTEDDATA, encryptionAlgorithm, X509_ALGOR),
-  ASN1_OPT(ISE_ENCRYPTEDDATA, encryptedContent, ASN1_OCTET_STRING)
+    ASN1_OPT(ISE_ENCRYPTEDDATA, version, ASN1_INTEGER),
+    ASN1_SEQUENCE_OF(ISE_ENCRYPTEDDATA, recipientInfos, ISE_RECIPIENTINFO),
+    ASN1_SIMPLE(ISE_ENCRYPTEDDATA, encryptedContentType, ASN1_OBJECT),
+    ASN1_SIMPLE(ISE_ENCRYPTEDDATA, encryptionAlgorithm, X509_ALGOR),
+    ASN1_OPT(ISE_ENCRYPTEDDATA, encryptedContent, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_ENCRYPTEDDATA)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_ENCRYPTEDDATA);
@@ -220,8 +214,8 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_ENCRYPTEDDATA);
 
 /* CertificateDigest */
 ASN1_SEQUENCE(ISE_CERTIFICATEDIGEST) = {
-  ASN1_OPT(ISE_CERTIFICATEDIGEST, algorithm, X509_ALGOR),
-  ASN1_SIMPLE(ISE_CERTIFICATEDIGEST, digest, ASN1_OCTET_STRING)
+    ASN1_OPT(ISE_CERTIFICATEDIGEST, algorithm, X509_ALGOR),
+    ASN1_SIMPLE(ISE_CERTIFICATEDIGEST, digest, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_CERTIFICATEDIGEST)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_CERTIFICATEDIGEST);
@@ -231,9 +225,9 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_CERTIFICATEDIGEST);
 
 /* SignerIdentifier */
 ASN1_CHOICE(ISE_SIGNERIDENTIFIER) = {
-  ASN1_SIMPLE(ISE_SIGNERIDENTIFIER, value.null, ASN1_NULL),
-  ASN1_SIMPLE(ISE_SIGNERIDENTIFIER, value.certificateDigest, ISE_CERTIFICATEDIGEST),
-  ASN1_SIMPLE(ISE_SIGNERIDENTIFIER, value.certificate, ASN1_OCTET_STRING)
+    ASN1_SIMPLE(ISE_SIGNERIDENTIFIER, value.null, ASN1_NULL),
+    ASN1_SIMPLE(ISE_SIGNERIDENTIFIER, value.certificateDigest, ISE_CERTIFICATEDIGEST),
+    ASN1_SIMPLE(ISE_SIGNERIDENTIFIER, value.certificate, ASN1_OCTET_STRING)
 } ASN1_CHOICE_END(ISE_SIGNERIDENTIFIER)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_SIGNERIDENTIFIER);
@@ -243,32 +237,32 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_SIGNERIDENTIFIER);
 
 /* SignerInfo */
 ASN1_SEQUENCE(ISE_SIGNERINFO) = {
-  ASN1_OPT(ISE_SIGNERINFO, version, ASN1_INTEGER),
-  ASN1_EXP_OPT(ISE_SIGNERINFO, signer, ISE_SIGNERIDENTIFIER, 0),
-  ASN1_IMP_OPT(ISE_SIGNERINFO, digestAlgorithm, X509_ALGOR, 1),
-  ASN1_IMP_OPT(ISE_SIGNERINFO, signatureAlgorithm, X509_ALGOR, 2),
-  ASN1_SEQUENCE_OF(ISE_SIGNERINFO, signedAttributes, X509_ALGOR),
-  ASN1_SEQUENCE_OF_OPT(ISE_SIGNERINFO, certificateChain, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_SIGNERINFO, signature, ASN1_OCTET_STRING)
+    ASN1_OPT(ISE_SIGNERINFO, version, ASN1_INTEGER),
+    ASN1_EXP_OPT(ISE_SIGNERINFO, signer, ISE_SIGNERIDENTIFIER, 0),
+    ASN1_IMP_OPT(ISE_SIGNERINFO, digestAlgorithm, X509_ALGOR, 1),
+    ASN1_IMP_OPT(ISE_SIGNERINFO, signatureAlgorithm, X509_ALGOR, 2),
+    ASN1_SEQUENCE_OF(ISE_SIGNERINFO, signedAttributes, X509_ALGOR),
+    ASN1_SEQUENCE_OF_OPT(ISE_SIGNERINFO, certificateChain, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_SIGNERINFO, signature, ASN1_OCTET_STRING)
 } ASN1_SEQUENCE_END(ISE_SIGNERINFO)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_SIGNERINFO);
 IMPLEMENT_ASN1_DUP_FUNCTION(ISE_SIGNERINFO);
 IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_SIGNERINFO);
 
-ASN1_ITEM_TEMPLATE(ISE_SIGNEDDATA_ATTRIBUTES_SIGN) =
-  ASN1_EX_TEMPLATE_TYPE(ASN1_TFLG_SEQUENCE_OF, 0, ISE_SIGNEDDATA_ATTRIBUTES, X509_ALGOR)
+    ASN1_ITEM_TEMPLATE(ISE_SIGNEDDATA_ATTRIBUTES_SIGN) =
+    ASN1_EX_TEMPLATE_TYPE(ASN1_TFLG_SEQUENCE_OF, 0, ISE_SIGNEDDATA_ATTRIBUTES, X509_ALGOR)
 ASN1_ITEM_TEMPLATE_END(ISE_SIGNEDDATA_ATTRIBUTES_SIGN)
 
 
-/* SignedData */
-ASN1_SEQUENCE(ISE_SIGNEDDATA) = {
-  ASN1_OPT(ISE_SIGNEDDATA, version, ASN1_INTEGER),
-  ASN1_SEQUENCE_OF(ISE_SIGNEDDATA, hashAlgorithms, X509_ALGOR),
-  ASN1_SIMPLE(ISE_SIGNEDDATA, signedContentType, ASN1_OBJECT),
-  ASN1_OPT(ISE_SIGNEDDATA, signedContent, ASN1_OCTET_STRING),
-  ASN1_SEQUENCE_OF(ISE_SIGNEDDATA, signerInfos, ISE_SIGNERINFO)
-} ASN1_SEQUENCE_END(ISE_SIGNEDDATA)
+    /* SignedData */
+    ASN1_SEQUENCE(ISE_SIGNEDDATA) = {
+        ASN1_OPT(ISE_SIGNEDDATA, version, ASN1_INTEGER),
+        ASN1_SEQUENCE_OF(ISE_SIGNEDDATA, hashAlgorithms, X509_ALGOR),
+        ASN1_SIMPLE(ISE_SIGNEDDATA, signedContentType, ASN1_OBJECT),
+        ASN1_OPT(ISE_SIGNEDDATA, signedContent, ASN1_OCTET_STRING),
+        ASN1_SEQUENCE_OF(ISE_SIGNEDDATA, signerInfos, ISE_SIGNERINFO)
+    } ASN1_SEQUENCE_END(ISE_SIGNEDDATA)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_SIGNEDDATA);
 IMPLEMENT_ASN1_DUP_FUNCTION(ISE_SIGNEDDATA);
@@ -277,11 +271,11 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_SIGNEDDATA);
 
 /* InnerECRequest */
 ASN1_SEQUENCE(ISE_INNERECREQUEST) = {
-  ASN1_SIMPLE(ISE_INNERECREQUEST, requestIdentifier, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_INNERECREQUEST, itsId, ASN1_IA5STRING),
-  ASN1_SIMPLE(ISE_INNERECREQUEST, wantedSubjectAttributes, ASN1_OCTET_STRING),
-  ASN1_OPT(ISE_INNERECREQUEST, wantedValidityRestrictions, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_INNERECREQUEST, responseEncryptionKey, ISE_PUBLICKEY)
+    ASN1_SIMPLE(ISE_INNERECREQUEST, requestIdentifier, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_INNERECREQUEST, itsId, ASN1_IA5STRING),
+    ASN1_SIMPLE(ISE_INNERECREQUEST, wantedSubjectAttributes, ASN1_OCTET_STRING),
+    ASN1_OPT(ISE_INNERECREQUEST, wantedValidityRestrictions, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_INNERECREQUEST, responseEncryptionKey, ISE_PUBLICKEY)
 } ASN1_SEQUENCE_END(ISE_INNERECREQUEST)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_INNERECREQUEST);
@@ -291,10 +285,10 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_INNERECREQUEST);
 
 /* InnerECResponse */
 ASN1_SEQUENCE(ISE_INNERECRESPONSE) = {
-  ASN1_SIMPLE(ISE_INNERECRESPONSE, requestHash, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_INNERECRESPONSE, responseCode, ASN1_ENUMERATED),
-  ASN1_OPT(ISE_INNERECRESPONSE, certificate, ASN1_OCTET_STRING),
-  ASN1_OPT(ISE_INNERECRESPONSE, cAContributionValue, ASN1_INTEGER)
+    ASN1_SIMPLE(ISE_INNERECRESPONSE, requestHash, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_INNERECRESPONSE, responseCode, ASN1_ENUMERATED),
+    ASN1_OPT(ISE_INNERECRESPONSE, certificate, ASN1_OCTET_STRING),
+    ASN1_OPT(ISE_INNERECRESPONSE, cAContributionValue, ASN1_INTEGER)
 } ASN1_SEQUENCE_END(ISE_INNERECRESPONSE)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_INNERECRESPONSE);
@@ -304,13 +298,13 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_INNERECRESPONSE);
 
 /* SharedATRequest */
 ASN1_SEQUENCE(ISE_SHAREDATREQUEST) = {
-  ASN1_SIMPLE(ISE_SHAREDATREQUEST, requestIdentifier, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_SHAREDATREQUEST, eaId, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_SHAREDATREQUEST, keyTag, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_SHAREDATREQUEST, wantedSubjectAttributes, ASN1_OCTET_STRING),
-  ASN1_OPT(ISE_SHAREDATREQUEST, wantedValidityRestrictions, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_SHAREDATREQUEST, wantedStart, ASN1_INTEGER),
-  ASN1_SIMPLE(ISE_SHAREDATREQUEST, responseEncryptionKey, ISE_PUBLICKEY)
+    ASN1_SIMPLE(ISE_SHAREDATREQUEST, requestIdentifier, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_SHAREDATREQUEST, eaId, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_SHAREDATREQUEST, keyTag, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_SHAREDATREQUEST, wantedSubjectAttributes, ASN1_OCTET_STRING),
+    ASN1_OPT(ISE_SHAREDATREQUEST, wantedValidityRestrictions, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_SHAREDATREQUEST, wantedStart, ASN1_INTEGER),
+    ASN1_SIMPLE(ISE_SHAREDATREQUEST, responseEncryptionKey, ISE_PUBLICKEY)
 } ASN1_SEQUENCE_END(ISE_SHAREDATREQUEST)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_SHAREDATREQUEST);
@@ -320,11 +314,11 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_SHAREDATREQUEST);
 
 /* InnerATRequest */
 ASN1_SEQUENCE(ISE_INNERATREQUEST) = {
-  ASN1_SIMPLE(ISE_INNERATREQUEST, verificationKey, ISE_PUBLICKEY),
-  ASN1_OPT(ISE_INNERATREQUEST, encryptionKey, ISE_PUBLICKEY),
-  ASN1_SIMPLE(ISE_INNERATREQUEST, hmacKey, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_INNERATREQUEST, signedByEC, ISE_SHAREDATREQUEST),
-  ASN1_SIMPLE(ISE_INNERATREQUEST, detachedEncryptedSignature, ISE_ENCRYPTEDDATA)
+    ASN1_SIMPLE(ISE_INNERATREQUEST, verificationKey, ISE_PUBLICKEY),
+    ASN1_OPT(ISE_INNERATREQUEST, encryptionKey, ISE_PUBLICKEY),
+    ASN1_SIMPLE(ISE_INNERATREQUEST, hmacKey, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_INNERATREQUEST, signedByEC, ISE_SHAREDATREQUEST),
+    ASN1_SIMPLE(ISE_INNERATREQUEST, detachedEncryptedSignature, ISE_ENCRYPTEDDATA)
 } ASN1_SEQUENCE_END(ISE_INNERATREQUEST)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_INNERATREQUEST);
@@ -334,10 +328,10 @@ IMPLEMENT_ASN1_PRINT_FUNCTION(ISE_INNERATREQUEST);
 
 /* InnerATResponse */
 ASN1_SEQUENCE(ISE_INNERATRESPONSE) = {
-  ASN1_SIMPLE(ISE_INNERATRESPONSE, requestHash, ASN1_OCTET_STRING),
-  ASN1_SIMPLE(ISE_INNERATRESPONSE, responseCode, ASN1_ENUMERATED),
-  ASN1_OPT(ISE_INNERATRESPONSE, certificate, ASN1_OCTET_STRING),
-  ASN1_OPT(ISE_INNERATRESPONSE, cAContributionValue, ASN1_INTEGER)
+    ASN1_SIMPLE(ISE_INNERATRESPONSE, requestHash, ASN1_OCTET_STRING),
+    ASN1_SIMPLE(ISE_INNERATRESPONSE, responseCode, ASN1_ENUMERATED),
+    ASN1_OPT(ISE_INNERATRESPONSE, certificate, ASN1_OCTET_STRING),
+    ASN1_OPT(ISE_INNERATRESPONSE, cAContributionValue, ASN1_INTEGER)
 } ASN1_SEQUENCE_END(ISE_INNERATRESPONSE)
 
 IMPLEMENT_ASN1_FUNCTIONS(ISE_INNERATRESPONSE);

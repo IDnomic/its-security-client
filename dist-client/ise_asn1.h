@@ -48,8 +48,8 @@ void addISEoids(void);
  */
 
 typedef struct {
-  ASN1_ENUMERATED *type;
-  ASN1_INTEGER *x;
+    ASN1_ENUMERATED *type;
+    ASN1_INTEGER *x;
 } ISE_PUBLICKEY;
 
 DECLARE_ASN1_FUNCTIONS(ISE_PUBLICKEY);
@@ -74,9 +74,9 @@ EC_KEY *ISE_PUBLICKEY_to_EC_KEY(EC_KEY **a, ISE_PUBLICKEY *key);
  */
 
 typedef struct {
-  ISE_PUBLICKEY *v;
-  ASN1_OCTET_STRING *c;
-  ASN1_OCTET_STRING *t;
+    ISE_PUBLICKEY *v;
+    ASN1_OCTET_STRING *c;
+    ASN1_OCTET_STRING *t;
 } ISE_ECIESENCRYPTEDKEY103097;
 
 DECLARE_ASN1_FUNCTIONS(ISE_ECIESENCRYPTEDKEY103097);
@@ -96,9 +96,9 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_ECIESENCRYPTEDKEY103097);
  */
 
 typedef struct {
-  ASN1_INTEGER *version;
-  ASN1_OBJECT *contentType;
-  ASN1_OCTET_STRING *content;
+    ASN1_INTEGER *version;
+    ASN1_OBJECT *contentType;
+    ASN1_OCTET_STRING *content;
 } ISE_DATA;
 
 DECLARE_ASN1_FUNCTIONS(ISE_DATA);
@@ -116,11 +116,11 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_DATA);
  *   encryptedKeyMaterial OCTET STRING }
  */
 
- typedef struct {
-  ASN1_OCTET_STRING *recipient;
-  X509_ALGOR *kexalgid;
-  ASN1_OCTET_STRING *encryptedKeyMaterial;
- } ISE_RECIPIENTINFO;
+typedef struct {
+    ASN1_OCTET_STRING *recipient;
+    X509_ALGOR *kexalgid;
+    ASN1_OCTET_STRING *encryptedKeyMaterial;
+} ISE_RECIPIENTINFO;
 
 DECLARE_ASN1_FUNCTIONS(ISE_RECIPIENTINFO);
 DECLARE_ASN1_DUP_FUNCTION(ISE_RECIPIENTINFO);
@@ -169,9 +169,9 @@ DECLARE_STACK_OF(ISE_RECIPIENTINFO);
  *   aes-nonce OCTET STRING (SIZE(12)) }
  */
 
- typedef struct {
-  ASN1_OCTET_STRING *aesNonce;
- } ISE_CCMDEFAULTPARAMETERS;
+typedef struct {
+    ASN1_OCTET_STRING *aesNonce;
+} ISE_CCMDEFAULTPARAMETERS;
 
 DECLARE_ASN1_FUNCTIONS(ISE_CCMDEFAULTPARAMETERS);
 DECLARE_ASN1_DUP_FUNCTION(ISE_CCMDEFAULTPARAMETERS);
@@ -192,11 +192,11 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_CCMDEFAULTPARAMETERS);
  */
 
 typedef struct {
-  ASN1_INTEGER *version;
-  STACK_OF(ISE_RECIPIENTINFO) *recipientInfos;
-  ASN1_OBJECT *encryptedContentType;
-  X509_ALGOR *encryptionAlgorithm;
-  ASN1_OCTET_STRING *encryptedContent;
+    ASN1_INTEGER *version;
+    STACK_OF(ISE_RECIPIENTINFO) *recipientInfos;
+    ASN1_OBJECT *encryptedContentType;
+    X509_ALGOR *encryptionAlgorithm;
+    ASN1_OCTET_STRING *encryptedContent;
 } ISE_ENCRYPTEDDATA;
 
 DECLARE_ASN1_FUNCTIONS(ISE_ENCRYPTEDDATA);
@@ -215,8 +215,8 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_ENCRYPTEDDATA);
  */
 
 typedef struct {
-  X509_ALGOR *algorithm;
-  ASN1_OCTET_STRING *digest;
+    X509_ALGOR *algorithm;
+    ASN1_OCTET_STRING *digest;
 } ISE_CERTIFICATEDIGEST;
 
 DECLARE_ASN1_FUNCTIONS(ISE_CERTIFICATEDIGEST);
@@ -236,12 +236,12 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_CERTIFICATEDIGEST);
  */
 
 typedef struct {
-  int type;
-  union {
-    ASN1_NULL *null;
-    ISE_CERTIFICATEDIGEST *certificateDigest;
-    ASN1_OCTET_STRING *certificate;
-  } value;
+    int type;
+    union {
+        ASN1_NULL *null;
+        ISE_CERTIFICATEDIGEST *certificateDigest;
+        ASN1_OCTET_STRING *certificate;
+    } value;
 } ISE_SIGNERIDENTIFIER;
 
 DECLARE_ASN1_FUNCTIONS(ISE_SIGNERIDENTIFIER);
@@ -265,13 +265,13 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_SIGNERIDENTIFIER);
  */
 
 typedef struct {
-  ASN1_INTEGER *version;
-  ISE_SIGNERIDENTIFIER *signer;
-  X509_ALGOR *digestAlgorithm;
-  X509_ALGOR *signatureAlgorithm;
-  STACK_OF(X509_ALGOR) *signedAttributes;
-  STACK_OF(ASN1_OCTET_STRING) *certificateChain;
-  ASN1_OCTET_STRING *signature;
+    ASN1_INTEGER *version;
+    ISE_SIGNERIDENTIFIER *signer;
+    X509_ALGOR *digestAlgorithm;
+    X509_ALGOR *signatureAlgorithm;
+    STACK_OF(X509_ALGOR) *signedAttributes;
+    STACK_OF(ASN1_OCTET_STRING) *certificateChain;
+    ASN1_OCTET_STRING *signature;
 } ISE_SIGNERINFO;
 
 DECLARE_ASN1_FUNCTIONS(ISE_SIGNERINFO);
@@ -284,33 +284,33 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_SIGNERINFO);
 
 DECLARE_ASN1_ITEM(ISE_SIGNEDDATA_ATTRIBUTES_SIGN)
 
-DECLARE_STACK_OF(ISE_SIGNERINFO);
+    DECLARE_STACK_OF(ISE_SIGNERINFO);
 
-/* allocate & free */
+    /* allocate & free */
 #define sk_ISE_SIGNERINFO_new(cmp)                 SKM_sk_new(ISE_SIGNERINFO, (cmp))
 #define sk_ISE_SIGNERINFO_new_null()               SKM_sk_new_null(ISE_SIGNERINFO)
 #define sk_ISE_SIGNERINFO_free(st)                 SKM_sk_free(ISE_SIGNERINFO, (st))
 #define sk_ISE_SIGNERINFO_pop_free(st, free_func)  SKM_sk_pop_free(ISE_SIGNERINFO, (st), (free_func))
 #define sk_ISE_SIGNERINFO_dup(st)                  SKM_sk_dup(ISE_SIGNERINFO, st)
 
-/* get & set */
+    /* get & set */
 #define sk_ISE_SIGNERINFO_num(st)                  SKM_sk_num(ISE_SIGNERINFO, (st))
 #define sk_ISE_SIGNERINFO_value(st, i)             SKM_sk_value(ISE_SIGNERINFO, (st), (i))
 #define sk_ISE_SIGNERINFO_set(st, i, val)          SKM_sk_set(ISE_SIGNERINFO, (st), (i), (val))
 
-/* add value */
+    /* add value */
 #define sk_ISE_SIGNERINFO_insert(st, val, i)       SKM_sk_insert(ISE_SIGNERINFO, (st), (val), (i))
 #define sk_ISE_SIGNERINFO_push(st, val)            SKM_sk_push(ISE_SIGNERINFO, (st), (val))
 #define sk_ISE_SIGNERINFO_unshift(st, val)         SKM_sk_unshift(ISE_SIGNERINFO, (st), (val))
 
-/* sort & find */
+    /* sort & find */
 #define sk_ISE_SIGNERINFO_set_cmp_func(st, cmp)    SKM_sk_set_cmp_func(ISE_SIGNERINFO, (st), (cmp))
 #define sk_ISE_SIGNERINFO_sort(st)                 SKM_sk_sort(ISE_SIGNERINFO, (st))
 #define sk_ISE_SIGNERINFO_is_sorted(st)            SKM_sk_is_sorted(ISE_SIGNERINFO, (st))
 #define sk_ISE_SIGNERINFO_find(st, val)            SKM_sk_find(ISE_SIGNERINFO, (st), (val))
 #define sk_ISE_SIGNERINFO_find_ex(st, val)         SKM_sk_find_ex(ISE_SIGNERINFO, (st), (val))
 
-/* delete value */
+    /* delete value */
 #define sk_ISE_SIGNERINFO_delete(st, i)            SKM_sk_delete(ISE_SIGNERINFO, (st), (i))
 #define sk_ISE_SIGNERINFO_delete_ptr(st, ptr)      SKM_sk_delete_ptr(ISE_SIGNERINFO, (st), (ptr))
 #define sk_ISE_SIGNERINFO_pop(st)                  SKM_sk_pop(ISE_SIGNERINFO, (st))
@@ -318,22 +318,22 @@ DECLARE_STACK_OF(ISE_SIGNERINFO);
 #define sk_ISE_SIGNERINFO_zero(st)                 SKM_sk_zero(ISE_SIGNERINFO, (st))
 
 
-/*
- * SignedData ::= SEQUENCE {
- *   version Version DEFAULT v1,
- *   hashAlgorithms HashAlgorithmsIdentifiers,
- *   signedContentType ContentType,
- *   signedContent OCTET STRING OPTIONAL,
- *   signerInfos SignerInfos }
- */
+    /*
+     * SignedData ::= SEQUENCE {
+     *   version Version DEFAULT v1,
+     *   hashAlgorithms HashAlgorithmsIdentifiers,
+     *   signedContentType ContentType,
+     *   signedContent OCTET STRING OPTIONAL,
+     *   signerInfos SignerInfos }
+     */
 
-typedef struct {
-  ASN1_INTEGER *version;
-  STACK_OF(X509_ALGOR) *hashAlgorithms;
-  ASN1_OBJECT *signedContentType;
-  ASN1_OCTET_STRING *signedContent;
-  STACK_OF(ISE_SIGNERINFO) *signerInfos;
-} ISE_SIGNEDDATA;
+    typedef struct {
+        ASN1_INTEGER *version;
+        STACK_OF(X509_ALGOR) *hashAlgorithms;
+        ASN1_OBJECT *signedContentType;
+        ASN1_OCTET_STRING *signedContent;
+        STACK_OF(ISE_SIGNERINFO) *signerInfos;
+    } ISE_SIGNEDDATA;
 
 DECLARE_ASN1_FUNCTIONS(ISE_SIGNEDDATA);
 DECLARE_ASN1_DUP_FUNCTION(ISE_SIGNEDDATA);
@@ -354,11 +354,11 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_SIGNEDDATA);
  */
 
 typedef struct {
-  ASN1_OCTET_STRING *requestIdentifier;
-  ASN1_IA5STRING *itsId;
-  ASN1_OCTET_STRING *wantedSubjectAttributes;
-  ASN1_OCTET_STRING *wantedValidityRestrictions;
-  ISE_PUBLICKEY *responseEncryptionKey;
+    ASN1_OCTET_STRING *requestIdentifier;
+    ASN1_IA5STRING *itsId;
+    ASN1_OCTET_STRING *wantedSubjectAttributes;
+    ASN1_OCTET_STRING *wantedValidityRestrictions;
+    ISE_PUBLICKEY *responseEncryptionKey;
 } ISE_INNERECREQUEST;
 
 DECLARE_ASN1_FUNCTIONS(ISE_INNERECREQUEST);
@@ -379,10 +379,10 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_INNERECREQUEST);
  */
 
 typedef struct {
-  ASN1_OCTET_STRING *requestHash;
-  ASN1_ENUMERATED *responseCode;
-  ASN1_OCTET_STRING *certificate;
-  ASN1_INTEGER *cAContributionValue;
+    ASN1_OCTET_STRING *requestHash;
+    ASN1_ENUMERATED *responseCode;
+    ASN1_OCTET_STRING *certificate;
+    ASN1_INTEGER *cAContributionValue;
 } ISE_INNERECRESPONSE;
 
 DECLARE_ASN1_FUNCTIONS(ISE_INNERECRESPONSE);
@@ -421,13 +421,13 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_INNERECRESPONSE);
  */
 
 typedef struct {
-  ASN1_OCTET_STRING *requestIdentifier;
-  ASN1_OCTET_STRING *eaId;
-  ASN1_OCTET_STRING *keyTag;
-  ASN1_OCTET_STRING *wantedSubjectAttributes;
-  ASN1_OCTET_STRING *wantedValidityRestrictions;
-  ASN1_INTEGER *wantedStart;
-  ISE_PUBLICKEY *responseEncryptionKey;
+    ASN1_OCTET_STRING *requestIdentifier;
+    ASN1_OCTET_STRING *eaId;
+    ASN1_OCTET_STRING *keyTag;
+    ASN1_OCTET_STRING *wantedSubjectAttributes;
+    ASN1_OCTET_STRING *wantedValidityRestrictions;
+    ASN1_INTEGER *wantedStart;
+    ISE_PUBLICKEY *responseEncryptionKey;
 } ISE_SHAREDATREQUEST;
 
 DECLARE_ASN1_FUNCTIONS(ISE_SHAREDATREQUEST);
@@ -449,11 +449,11 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_SHAREDATREQUEST);
  */
 
 typedef struct {
-  ISE_PUBLICKEY *verificationKey;
-  ISE_PUBLICKEY *encryptionKey;
-  ASN1_OCTET_STRING *hmacKey;
-  ISE_SHAREDATREQUEST *signedByEC;
-  ISE_ENCRYPTEDDATA *detachedEncryptedSignature;
+    ISE_PUBLICKEY *verificationKey;
+    ISE_PUBLICKEY *encryptionKey;
+    ASN1_OCTET_STRING *hmacKey;
+    ISE_SHAREDATREQUEST *signedByEC;
+    ISE_ENCRYPTEDDATA *detachedEncryptedSignature;
 } ISE_INNERATREQUEST;
 
 DECLARE_ASN1_FUNCTIONS(ISE_INNERATREQUEST);
@@ -474,10 +474,10 @@ DECLARE_ASN1_PRINT_FUNCTION(ISE_INNERATREQUEST);
  */
 
 typedef struct {
-  ASN1_OCTET_STRING *requestHash;
-  ASN1_ENUMERATED *responseCode;
-  ASN1_OCTET_STRING *certificate;
-  ASN1_INTEGER *cAContributionValue;
+    ASN1_OCTET_STRING *requestHash;
+    ASN1_ENUMERATED *responseCode;
+    ASN1_OCTET_STRING *certificate;
+    ASN1_INTEGER *cAContributionValue;
 } ISE_INNERATRESPONSE;
 
 DECLARE_ASN1_FUNCTIONS(ISE_INNERATRESPONSE);

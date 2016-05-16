@@ -14,14 +14,14 @@
 #define NEXTLOGLEVEL(a) ((a>0)?(a+1):0)
 
 #define LOGMSG(level, msg, ...) do { \
-  fprintf(stderr, "%*.0i", level, 0); \
-  fprintf(stderr, msg, ## __VA_ARGS__); \
-  fprintf(stderr, "\n"); \
+    fprintf(stderr, "%*.0i", level, 0); \
+    fprintf(stderr, msg, ## __VA_ARGS__); \
+    fprintf(stderr, "\n"); \
 } while (0)
 
 typedef struct {
-  unsigned char *data;
-  int datalen;
+    unsigned char *data;
+    int datalen;
 } databuf;
 
 
