@@ -1,9 +1,11 @@
 
-# Using scoop/dist-client
+# Using pki-client
  
 ## Introduction
  
-The client code models a PKI client (namely ITS) for ISE/Scoop@F projects, requesting and receiving certificates: an EC (enroll credential) or an AT (authorization ticket). The code is written in C.
+This client sample allows the interaction with PKI by requesting certificates: EC (enroll credential) or AT (authorization ticket). The code is written in C.
+
+This client is implemented in accordance to ETSI specifications (TS 103 097) and used for the PKI tests in both cooperative ITS projects (ISE and SCOOP@F).
  
 ## Compilation
  
