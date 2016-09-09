@@ -1,17 +1,17 @@
 #! /bin/sh
 
-###### Bloc de configuration
+###### Configuration bloc
 
-### Paramètres propres au boitier ITS
+### ITS parameters
 
 TECHNICALKEY=TechnicalKey
 
 ######
 
 
-# Clé technique, ne bouge pas de la vie de l'ITS
+# Technical key.
 if [ ! -f $TECHNICALKEY ]; then
-  echo "Génération de la clé technique."
+  echo "Technical key generation."
   ../PKIClient genkey --output $TECHNICALKEY
 fi
 

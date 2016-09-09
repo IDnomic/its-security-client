@@ -3,7 +3,7 @@
 KEYFILE=$1
 
 if [ -z $KEYFILE ]; then
-  echo "Je veux un nom de fichier en argument."
+  echo "File name required."
   exit
 fi
 

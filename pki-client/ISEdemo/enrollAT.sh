@@ -1,66 +1,63 @@
 #! /bin/sh
 
-###### Bloc de configuration
+###### Configuration bloc
 
-### Paramètres propres à la EA
+### EA parameters
 
 EAID=0D88BE8BF72C7E4F
 EAENCRYPTIONPUBLICKEY=ISEEAEncryptionKey.pub
 
-### Paramètres propres à la AA
+### AA parameters
 
 AAID=518CC02CA2F5BFDF
 AAENCRYPTIONPUBLICKEY=ISEAAEncryptionKey.pub
 AAVERIFICATIONPUBLICKEY=ISEAAVerificationKey.pub
 AASERVER=http://52.30.172.70
 
-### Paramètres propres au boitier ITS
+### ITS parameters
 
 AIDSSPLIST=2403000000250400000000
 ECVERIFICATIONKEY=ECVerificationKey
 ENROLMENTCERTIFICATE=EnrolmentCertificate
 
-# Ces fichiers seront générés
+# Generated files
 ATVERIFICATIONKEY=ATVerificationKey
 AUTHORIZATIONTICKET=AuthorizationTicket
 
-### Divers
+### Others
 
-# Écart actuel entre TAI et UTC (avec epoch TS 103097)
+# TAI - UTC diff
 TAIUTC=4
 
 ######
 
 
 echo "====================="
-echo "Enrôlement pour un AT"
+echo "AT request"
 echo "====================="
 
 if [ ! -f $ATVERIFICATIONKEY ]; then
-  echo "Génération de la clé de vérification."
+  echo "Verification key generation."
   ../PKIClient genkey --output $ATVERIFICATIONKEY
 else
-  echo "Clé de vérification AT existante."
+  echo "Existing verification key."
 fi
 
 RESPDECRKEY=$$.ResponseDecryptionKey
 ATREQ=$$.EncapsulatedATRequest.der
 ATRESP=$$.EncapsulatedATResponse.der
 
-echo "Génération de la ResponseDecryptionKey."
+echo "Response key generation."
 ../PKIClient genkey --output $RESPDECRKEY
 
-echo "Construction de la requête AT"
+echo "Request building."
 ../PKIClient genATEnroll -c $ENROLMENTCERTIFICATE -k $ECVERIFICATIONKEY -d $RESPDECRKEY -v $ATVERIFICATIONKEY -p $AIDSSPLIST -R $EAID -K $EAENCRYPTIONPUBLICKEY -a $AAID -A $AAENCRYPTIONPUBLICKEY -o $ATREQ --taiutc $TAIUTC --debug
 
-echo "Transmission de la requête à la AA"
+echo "Request sending."
 curl -v -o $ATRESP --header "Content-type: application/x-its-request" --data-binary @$ATREQ $AASERVER
 
-echo "Extraction de la réponse"
+echo "Response reading."
 ../PKIClient receiveATResponse --input $ATRESP --output $AUTHORIZATIONTICKET --responsedecryptionkey $RESPDECRKEY --aaverificationkey $AAVERIFICATIONPUBLICKEY --aaid $AAID --request $ATREQ --debug
 
-echo "Suppression de la ResponseDecryptionKey"
-rm $RESPDECRKEY
-
-echo "Suppression des requête/réponse"
-rm $ATREQ $ATRESP
+echo "Clean up."
+rm $RESPDECRKEY $ATREQ $ATRESP

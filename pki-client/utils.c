@@ -504,11 +504,10 @@ done:
 
 void *ETSI_ECIES_KDF(const void *in, size_t inlen, void *out, size_t *outlen)
 {
-    /* compteur 1..2^32 */
-    /* CB=compteur exprimé sur 32 bits en big endian */
-    /* SHA256(in||CB) */
-    /* compteur++, et on recommence tant qu'on a encore besoin de
-     * générer du stream */
+    /* counter 1..2^32
+       CB=big endian counter on 32 bits
+       SHA256(in||CB)
+       counter++, and we do again while we need to generate stream */
     void *ret = NULL;
     int counter = 1;
     unsigned char CB[4];

@@ -5,7 +5,7 @@
 #define TAIUTC 4
 #define TAIUTCstr "4"
 
-/* Paramètres ETSI TS 103097 */
+/* ETSI TS 103097 PARAMETERS */
 #define TAGLEN 16
 #define KEYLEN 16
 #define NONCELEN 12
