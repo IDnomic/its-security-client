@@ -4,10 +4,10 @@
 
 ### EA parameters
 
-EAID=0D88BE8BF72C7E4F
-EAENCRYPTIONPUBLICKEY=ISEEAEncryptionKey.pub
-EAVERIFICATIONPUBLICKEY=ISEEAVerificationKey.pub
-EASERVER=http://52.30.153.183
+EAID=0AC8157DDCAD3F78
+EAENCRYPTIONPUBLICKEY=EAEncryptionKey.pub
+EAVERIFICATIONPUBLICKEY=EAVerificationKey.pub
+EASERVER=http://ea-plugtests.irt-ise-pki.org
 
 ### ITS parameters
 
