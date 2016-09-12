@@ -5,26 +5,26 @@
 
 void addISEoids(void)
 {
-    NID_ISE_ct = OBJ_create("1.3.6.1.4.1.22234.4.1.1", "id-ITS-ISE-ct", "ISE Content-types");
-    NID_ISE_ct_Data = OBJ_create("1.3.6.1.4.1.22234.4.1.1.1", "id-ITS-ISE-ct-Data", "ISE Data");
-    NID_ISE_ct_SignedData = OBJ_create("1.3.6.1.4.1.22234.4.1.1.2", "id-ITS-ISE-ct-SignedData", "ISE SignedData");
-    NID_ISE_ct_EncryptedData = OBJ_create("1.3.6.1.4.1.22234.4.1.1.3", "id-ITS-ISE-ct-EncryptedData", "ISE EncryptedData");
-    NID_ISE_ct_EnrolmentRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.4", "id-ITS-ISE-ct-EnrolmentRequest", "ISE EnrolmentRequest");
-    NID_ISE_ct_EnrolmentResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.5", "id-ITS-ISE-ct-EnrolmentResponse", "ISE EnrolmentResponse");
-    NID_ISE_ct_AuthorizationRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.6", "id-ITS-ISE-ct-AuthorizationRequest", "ISE AuthorizationRequest");
-    NID_ISE_ct_AuthorizationResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.7", "id-ITS-ISE-ct-AuthorizationResponse", "ISE AuthorizationResponse");
-    NID_ISE_ct_AuthorizationValidationRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.8", "id-ITS-ISE-ct-AuthorizationValidationRequest", "ISE AuthorizationValidationRequest");
-    NID_ISE_ct_AuthorizationValidationResponse = OBJ_create("1.3.6.1.4.1.22234.4.1.1.9", "id-ITS-ISE-ct-AuthorizationValidationResponse", "ISE AuthorizationValidationResponse");
-    NID_ISE_ct_SharedATRequest = OBJ_create("1.3.6.1.4.1.22234.4.1.1.10", "id-ITS-ISE-ct-SharedATRequest", "ISE SharedATRequest");
+    NID_ISE_ct = OBJ_create("0.4.0.2941.1", "id-ITS-ISE-ct", "ISE Content-types");
+    NID_ISE_ct_Data = OBJ_create("0.4.0.2941.1.1", "id-ITS-ISE-ct-Data", "ISE Data");
+    NID_ISE_ct_SignedData = OBJ_create("0.4.0.2941.1.2", "id-ITS-ISE-ct-SignedData", "ISE SignedData");
+    NID_ISE_ct_EncryptedData = OBJ_create("0.4.0.2941.1.3", "id-ITS-ISE-ct-EncryptedData", "ISE EncryptedData");
+    NID_ISE_ct_EnrolmentRequest = OBJ_create("0.4.0.2941.1.4", "id-ITS-ISE-ct-EnrolmentRequest", "ISE EnrolmentRequest");
+    NID_ISE_ct_EnrolmentResponse = OBJ_create("0.4.0.2941.1.5", "id-ITS-ISE-ct-EnrolmentResponse", "ISE EnrolmentResponse");
+    NID_ISE_ct_AuthorizationRequest = OBJ_create("0.4.0.2941.1.6", "id-ITS-ISE-ct-AuthorizationRequest", "ISE AuthorizationRequest");
+    NID_ISE_ct_AuthorizationResponse = OBJ_create("0.4.0.2941.1.7", "id-ITS-ISE-ct-AuthorizationResponse", "ISE AuthorizationResponse");
+    NID_ISE_ct_AuthorizationValidationRequest = OBJ_create("0.4.0.2941.1.8", "id-ITS-ISE-ct-AuthorizationValidationRequest", "ISE AuthorizationValidationRequest");
+    NID_ISE_ct_AuthorizationValidationResponse = OBJ_create("0.4.0.2941.1.9", "id-ITS-ISE-ct-AuthorizationValidationResponse", "ISE AuthorizationValidationResponse");
+    NID_ISE_ct_SharedATRequest = OBJ_create("0.4.0.2941.1.10", "id-ITS-ISE-ct-SharedATRequest", "ISE SharedATRequest");
 
-    NID_ISE_algos = OBJ_create("1.3.6.1.4.1.22234.4.1.2", "id-ITS-ISE-algos", "ISE algorithms");
-    NID_ISE_algos_aes128CCM_103097 = OBJ_create("1.3.6.1.4.1.22234.4.1.2.1", "id-aes128-CCM-103097", "AES128CCM with TS 103097 params");
-    NID_ISE_algos_ecies_103097 = OBJ_create("1.3.6.1.4.1.22234.4.1.2.2", "id-ecies-103097", "ECIES with TS 103097 params");
+    NID_ISE_algos = OBJ_create("0.4.0.2941.2", "id-ITS-ISE-algos", "ISE algorithms");
+    NID_ISE_algos_aes128CCM_103097 = OBJ_create("0.4.0.2941.2.1", "id-aes128-CCM-103097", "AES128CCM with TS 103097 params");
+    NID_ISE_algos_ecies_103097 = OBJ_create("0.4.0.2941.2.2", "id-ecies-103097", "ECIES with TS 103097 params");
 
-    NID_ISE_attrs = OBJ_create("1.3.6.1.4.1.22234.4.1.3", "id-ITS-ISE-attrs", "ISE attributes");
-    NID_ISE_attrs_messageDigest = OBJ_create("1.3.6.1.4.1.22234.4.1.3.1", "id-messageDigest", "ISE messageDigest");
-    NID_ISE_attrs_contentType = OBJ_create("1.3.6.1.4.1.22234.4.1.3.2", "id-contentType", "ISE contentType");
-    NID_ISE_attrs_signingTime = OBJ_create("1.3.6.1.4.1.22234.4.1.3.3", "id-signingTime", "ISE signingTime");
+    NID_ISE_attrs = OBJ_create("0.4.0.2941.3", "id-ITS-ISE-attrs", "ISE attributes");
+    NID_ISE_attrs_messageDigest = OBJ_create("0.4.0.2941.3.1", "id-messageDigest", "ISE messageDigest");
+    NID_ISE_attrs_contentType = OBJ_create("0.4.0.2941.3.2", "id-contentType", "ISE contentType");
+    NID_ISE_attrs_signingTime = OBJ_create("0.4.0.2941.3.3", "id-signingTime", "ISE signingTime");
 }
 
 
