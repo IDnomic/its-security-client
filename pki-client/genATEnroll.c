@@ -16,6 +16,7 @@ typedef struct {
     char *signaturekeyfile;
     char *responsedecryptionkeyfile;
     char *verificationkeyfile;
+    char *rawhexpubkeyfile;
     char *encryptionkeyfile;
     char *hexitsaidssplist;
     char *hexvalidityrestrictions;
@@ -54,6 +55,7 @@ void printhelp_genATEnroll(void)
     printf("  -k|--signaturekey <file>\n");
     printf("  -d|--responsedecryptionkey <file>\n");
     printf("  -v|--verificationkey <file>\n");
+    printf("  -x|--rawhexpubkey <file>\n");
     printf(" (-e|--encryptionkey <file>)\n");
     printf("  -p|--itsaidssplist <hexvalue>\n");
     printf(" (-r|--validityrestrictions <hexvalue>)\n");
@@ -67,7 +69,7 @@ void printhelp_genATEnroll(void)
     printf(" (--debug)\n");
     printf("\n");
     printf("By default, difference between TAI and UTC is equal to " TAIUTCstr " seconds.\n");
-    printf("\n");  
+    printf("\n");
 
     exit(1);
 }
@@ -87,6 +89,7 @@ void init_genATEnroll(int argc, char **argv, genATEnroll_st *options)
             { "signaturekey", 1, 0, 'k' },
             { "responsedecryptionkey", 1, 0, 'd' },
             { "verificationkey", 1, 0, 'v' },
+            { "rawhexpubkey", 1, 0, 'x' },
             { "encryptionkey", 1, 0, 'e' },
             { "itsaidssplist", 1, 0, 'p' },
             { "validityrestrictions", 1, 0, 'r' },
@@ -102,7 +105,7 @@ void init_genATEnroll(int argc, char **argv, genATEnroll_st *options)
             { 0, 0, 0, 0 }
         };
 
-        c = getopt_long(argc, argv, "c:k:d:v:e:p:r:R:K:a:A:o:st:_h", long_options, &option_index);
+        c = getopt_long(argc, argv, "c:k:d:v:x:e:p:r:R:K:a:A:o:st:_h", long_options, &option_index);
         if (c == -1)
             break;
 
@@ -125,6 +128,11 @@ void init_genATEnroll(int argc, char **argv, genATEnroll_st *options)
             case 'v':
                 if (options->verificationkeyfile) free(options->verificationkeyfile);
                 options->verificationkeyfile = strdup(optarg);
+                break;
+
+            case 'x':
+                if (options->rawhexpubkeyfile) free(options->rawhexpubkeyfile);
+                options->rawhexpubkeyfile = strdup(optarg);
                 break;
 
             case 'e':
@@ -210,6 +218,7 @@ void cleanup_genATEnroll(genATEnroll_st *options)
     if (options->signaturekeyfile) free(options->signaturekeyfile);
     if (options->responsedecryptionkeyfile) free(options->responsedecryptionkeyfile);
     if (options->verificationkeyfile) free(options->verificationkeyfile);
+    if (options->rawhexpubkeyfile) free(options->rawhexpubkeyfile);
     if (options->encryptionkeyfile) free(options->encryptionkeyfile);
     if (options->hexitsaidssplist) free(options->hexitsaidssplist);
     if (options->hexvalidityrestrictions) free(options->hexvalidityrestrictions);
@@ -256,7 +265,7 @@ int verifyargs_genATEnroll(genATEnroll_st *options)
         goto done;
     }
 
-    if (!options->verificationkeyfile)
+    if ((!options->verificationkeyfile) && (!options->rawhexpubkeyfile))
     {
         fprintf(stderr, "I need a verification key.\n");
         goto done;
@@ -742,10 +751,20 @@ int main_genATEnroll(int argc, char **argv)
         goto done;
     }
 
-    if (!(options->verificationKey = readECPrivateKey(options->verificationkeyfile)))
-    {
-        fprintf(stderr, "Unable to read verification key.\n");
-        goto done;
+    if(options->verificationkeyfile) {
+        if (!(options->verificationKey = readECPublicKey(options->verificationkeyfile)))
+        {
+            fprintf(stderr, "Unable to read verification key.\n");
+            goto done;
+        }
+    }
+
+    if(options->rawhexpubkeyfile) {
+        if (!(options->verificationKey = readRawHexECPublicKey(options->rawhexpubkeyfile)))
+        {
+            fprintf(stderr, "Unable to read verification key from raw hey file.\n");
+            goto done;
+        }
     }
 
     if (options->encryptionkeyfile)

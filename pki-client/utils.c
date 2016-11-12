@@ -1,11 +1,14 @@
 #include "utils.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <openssl/ec.h>
 #include <openssl/objects.h>
 #include <openssl/bn.h>
 #include <openssl/bio.h>
 #include <openssl/pem.h>
+
+#define ECC_POINT_LENGTH    32
 
 void unhex(char *src, unsigned char *dst, int *dstlen)
 {
@@ -349,6 +352,112 @@ done:
             key = NULL;
         }
     return key;
+}
+
+EC_KEY *readRawHexECPublicKey(char *filename)
+{
+    FILE* sp_file = NULL;
+    EC_KEY *ec_key = NULL;
+    int result = 0;
+    const EC_GROUP* ec_group = NULL;
+    EC_POINT* ec_point = NULL;
+    uint8_t au8_x[ECC_POINT_LENGTH];
+    uint8_t au8_y[ECC_POINT_LENGTH];
+    BIGNUM* bn_x = NULL;
+    BIGNUM* bn_y = NULL;
+    char st_digit[3];
+    uint8_t u8_index = 0;
+    char* cp_err = NULL;
+
+    memset(au8_x, 0, sizeof(au8_x));
+    memset(au8_y, 0, sizeof(au8_y));
+    memset(st_digit, 0, sizeof(st_digit));
+
+    if(NULL == filename) {
+        goto done;
+    }
+
+    sp_file = fopen(filename, "r");
+    if(NULL == sp_file) {
+        goto done;
+    }
+
+    /* read X */
+    for(u8_index = 0; u8_index < ECC_POINT_LENGTH; u8_index++) {
+        if(2 != fread(st_digit, 1, 2, sp_file)) {
+            goto done;
+        }
+        st_digit[2] = '\0';
+        au8_x[u8_index] = (uint8_t)strtoul(st_digit, &cp_err, 16);
+        if(cp_err && (*cp_err)) {
+            goto done;
+        }
+    }
+    /* read Y */
+    for(u8_index = 0; u8_index < ECC_POINT_LENGTH; u8_index++) {
+        if(2 != fread(st_digit, 1, 2, sp_file)) {
+            goto done;
+        }
+        st_digit[2] = '\0';
+        au8_y[u8_index] = (uint8_t)strtoul(st_digit, &cp_err, 16);
+        if(cp_err && (*cp_err)) {
+            goto done;
+        }
+    }
+
+    bn_x = BN_bin2bn(au8_x, sizeof(au8_x), NULL);
+    if(NULL == bn_x) {
+        goto done;
+    }
+
+    bn_y = BN_bin2bn(au8_y, sizeof(au8_y), NULL);
+    if(NULL == bn_y) {
+        goto done;
+    }
+    ec_key = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
+    if(NULL == ec_key) {
+        goto done;
+    }
+
+    ec_group = EC_KEY_get0_group(ec_key);
+    if(NULL == ec_group) {
+        goto done;
+    }
+
+    ec_point = EC_POINT_new(ec_group);
+    if(NULL == ec_point) {
+        goto done;
+    }
+
+    if(0 == EC_POINT_set_affine_coordinates_GFp(ec_group, ec_point,
+                                                bn_x, bn_y, NULL)) {
+        goto done;
+    }
+
+    if(0 == EC_KEY_set_public_key(ec_key, ec_point)) {
+        goto done;
+    }
+
+    result = 1;
+
+done:
+    if (result != 1) {
+        if (ec_key)
+        {
+            EC_KEY_free(ec_key);
+            ec_key = NULL;
+        }
+    }
+    if(NULL != bn_x) {
+        BN_clear_free(bn_x);
+    }
+    if(NULL != bn_y) {
+        BN_clear_free(bn_y);
+    }
+    if(NULL != ec_point) {
+        EC_POINT_free(ec_point);
+    }
+    return ec_key;
 }
 
 

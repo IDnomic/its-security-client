@@ -35,6 +35,7 @@ int pushbuf(databuf *buf, unsigned char *data, unsigned int len);
 EC_KEY *readECPrivateKey(char *filename);
 int writeECPrivateKey(char *filename, EC_KEY *key);
 EC_KEY *readECPublicKey(char *filename);
+EC_KEY *readRawHexECPublicKey(char *filename);
 int encryptccm(databuf *plaintext,
                unsigned char *key, unsigned char *nonce,
                databuf **ciphertext);
