@@ -9,20 +9,13 @@ This client is implemented in accordance to ETSI specifications (TS 103 097) and
  
 ## Compilation
  
-You need `make` and `gcc` to compile this client. Also, the client must be compiled whith OpenSSL 1.0.2. Probably your system has not an updated version (you can check with `openssl version`), you can only compile sources and link this client with. To do that, [download OpenSSL sources](https://www.openssl.org/source/), configure and compile and create an environment variable `OPENSSL_HOME` with the path to the root directory of this updated OpenSSL sources.
+You need `make` and `gcc` to compile this client. Also, the client must be compiled whith (at least) OpenSSL 1.0.2. If your system has not an updated version (you can check with `openssl version`), you can only compile sources and link this client with. To do that, [download OpenSSL sources](https://www.openssl.org/source/), configure and compile and create an environment variable `OPENSSL_HOME` with the path to the root directory of this updated OpenSSL sources.
  
 To compile the client, use command `make` in a unix environnement in the sources directory.
  
 ## Quick start using existing shell scripts
  
-Once the client compiled, some shell scripts in ISEdemo directory can be used to simulate the complete communication to EA and AA.
- 
- * `./prepareITS.sh` generates an ITS Technical key.
- * `./getpubkeyforitsregistration.sh <file_name>` converts the ITS Technical public key in DER format.
- * `./enrollEC.sh` requests a certificate enrollment.
- * `./enrollAT.sh` requests an autorization ticket.
-
-To request a certificate EC or AT, the ITS must be recorded at the EC. The communication requires the EA and AA public key for verification and encryption, also the access points.
+Once the client compiled, some shell scripts in ISEdemo directory can be used to simulate the complete communication to EA and AA. See the directory `demo` for more information.
 
 ## PKIClient
  
