@@ -27,7 +27,7 @@ AUTHORIZATIONTICKET=AuthorizationTicket
 ### Others
 
 # TAI - UTC diff
-TAIUTC=4
+TAIUTC=5
 
 ######
 

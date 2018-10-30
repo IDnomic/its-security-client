@@ -22,7 +22,7 @@ ENROLMENTCERTIFICATE=EnrolmentCertificate
 ### Others
 
 # TAI - UTC diff
-TAIUTC=4
+TAIUTC=5
 
 ######
 
