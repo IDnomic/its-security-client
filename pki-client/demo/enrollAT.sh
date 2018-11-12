@@ -4,15 +4,15 @@
 
 ### EA parameters
 
-EAID=A3C60C5FCDC4FAE5
-EAENCRYPTIONPUBLICKEY=DemoEAEncryptionKey.pub
+EAID=A4F37732A5D7A095
+EAENCRYPTIONPUBLICKEY=VisteonEAEncryptionKey.pub
 
 ### AA parameters
 
-AAID=69C94DBD7B6F0BBB
-AAENCRYPTIONPUBLICKEY=DemoAAEncryptionKey.pub
-AAVERIFICATIONPUBLICKEY=DemoAAVerificationKey.pub
-AASERVER=http://aa.itspki.innovation.keynectis.net
+AAID=D74236C0C47198A8
+AAENCRYPTIONPUBLICKEY=IntegrationAAEncryptionKey.pub
+AAVERIFICATIONPUBLICKEY=IntegrationAAVerificationKey.pub
+AASERVER=http://aa.integration.innovation.keynectis.net
 
 ### ITS parameters
 
